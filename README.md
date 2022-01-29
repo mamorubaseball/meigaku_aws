@@ -1,1 +1,1 @@
-# meigaku
+# meigakuナビサイト
