@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method="POST" enctype="multipart/form-data">
+    {% if user.is_authenticated %}
+    <div class="ml-5 ">
+    <p>ログインしています</p>
+    <p>{{ user.username }}さんのアカウントです</p>
+    </div>
+  {% csrf_token %}
+  <div class="ml-5 ">
+    <p>{{ user.username }}さんを削除してもよろしいですか？</p>
+   <input class="inline-flex items-center bg-gray-100 border-0 mr-5 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0" type="submit" value="削除する">
+    <a class="inline-flex items-center bg-gray-100 border-0 mr-5 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0" href="{% url 'circle_accounts:circle_login_home' pk=user.id %}">homeへ戻る</a>
+</div>
+    {% endif %}
+</form>
+{% endblock %}

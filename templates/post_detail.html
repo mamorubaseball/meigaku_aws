@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load convert_css %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'dist.css' %}">
+<h2>{{ post.title }}</h2><br>
+    {% if post.picture %}
+    <img width="75px" height="75px" src="{{ post.picture.url }}"><br>
+    {% endif %}
+    <p>{{ post.text | markdown_to_html}}</p>
+{% endblock %}
+

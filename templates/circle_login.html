@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method="POST" enctype="multipart/form-data">
+    {% if user.is_authenticated %}
+    <div class="ml-5 ">
+    <p>ログインしています</p>
+    <p>{{ user.username }}さんのアカウントです</p>
+
+        <a href="{% url 'circle_accounts:circle_logout' %}" class="inline-flex items-center bg-gray-100 border-0 mr-5 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">ログアウト</a>
+        <a href="{% url 'circle_accounts:circle_login_home'　pk=user.id %}" class="inline-flex items-center bg-gray-100 border-0 mr-5 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">ホーム画面へ遷移する</a>
+    </div>
+    {% else%}
+    {{ form.as_p }}
+    {% if messages %}
+        {% for message in messages %}
+        <p> {{ message }}</p>
+        {% endfor %}
+    {% endif %}
+   {% csrf_token %}
+        <div class="ml-5 ">
+   <input class="inline-flex items-center bg-gray-100 border-0 mr-5 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0" type="submit" value="ログイン">
+            <a href="" class="inline-flex items-center bg-gray-100 border-0 mr-5 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">パスワードを忘れた方</a>
+</div>
+    {% endif %}
+</form>
+{% endblock %}

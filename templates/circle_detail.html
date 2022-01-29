@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load convert_css %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'dist.css' %}">
+    {% if circle.picture %}
+    <div class="max-w-full h-auto p-5" >
+        <img src="{{ circle.picture.url }}">
+    </div>
+    {% endif %}
+    <p class="p-2 text-orange-400 bg-[#fffaf4] border-l-orange-500 border-8 "> 活動内容</p>{{ circle.contents }}
+    <p class="p-2 text-orange-400 bg-[#fffaf4] border-l-orange-500 border-8">活動頻度</p>
+{{ circle.how_often }}<br>
+    <p class="p-2 text-orange-400 bg-[#fffaf4] border-l-orange-500 border-8">イベント</p>
+        {{ circle.event }}<br>
+    <p class="p-2 text-orange-400 bg-[#fffaf4] border-l-orange-500 border-8">活動場所</p>{{ circle.place }}<br>
+    <p class="p-2 text-orange-400 bg-[#fffaf4] border-l-orange-500 border-8">活動費用</p>{{ circle.money }}<br>
+    <p class="p-2 text-orange-400 bg-[#fffaf4] border-l-orange-500 border-8">人数</p>{{ circle.member }}<br>
+    <p class="p-2 text-orange-400 bg-[#fffaf4] border-l-orange-500 border-8">飲み会の頻度</p>{{ circle.how_often_drink }}<br>
+    <p class="p-2 text-orange-400 bg-[#fffaf4] border-l-orange-500 border-8">ツイッター</p>
+<a href="{{ circle.twitter_url　}}" class="no-underline hover:underline text-blue-500 text-lg">Twittterアカウント</a><br>
+    <p class="p-2 text-orange-400 bg-[#fffaf4] border-l-orange-500 border-8">インスタグラム</p>
+<a href="{{ circle.instagram_url }}" class="no-underline hover:underline text-blue-500 text-lg">Instagramアカウント</a><br>
+{% endblock %}

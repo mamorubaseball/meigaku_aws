@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+   {% if user.is_authenticated %}
+    <p>{{ user.username }}さんの投稿内容</p>
+    {% endif %}
+    {% if content %}
+    <p>活動内容</p>{{ content.contents}}<br>
+        {% if content.picture %}
+    <img width="75px" height="75px" src="{{ content.picture.url }}"><br>
+    {% endif %}
+    <p>活動頻度</p>{{ content.how_often }}<br>
+    <p>イベント</p>{{ content.event }}<br>
+    <p>活動場所</p>{{ content.place }}<br>
+    <p>活動費用</p>{{ content.money }}<br>
+    <p>人数</p>{{ content.member }}<br>
+    <p>飲み会の頻度</p>{{ content.how_often_drink }}<br>
+    <p>ツイッター</p>{{ content.twitter_url }}<br>
+    <p>インスタグラム</p>{{ content.instagram_url }}<br>
+ <a href="{% url 'circle_accounts:circle_edit' user.id %} " class="inline-flex items-center bg-gray-100 border-0 mr-5 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">投稿内容を編集する</a>
+    {% else %}
+<form method="POST" enctype="multipart/form-data">
+   {% csrf_token %}
+
+    {{form.as_p}}
+    <div class="ml-5 ">
+   <input class="inline-flex items-center bg-gray-100 border-0 mr-5 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0" type="submit" value="投稿">
+</div>
+</form>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load num_limit %}
+{% block content %}
+
+
+
+
+
+<h1>新規サークル</h1>
+<div class="circle_lists">
+    <section class="container px-6 py-4 mx-auto">
+  <div class="grid gap-6 mb-8 md:grid-cols-1 lg:grid-cols-2">
+      {% for circle in CircleContents_lists %}
+    <!-- Card 1 -->
+    <div class="flex-col items-start p-4 bg-white border-2 border-gray-200 rounded-lg shadow-sm dark:bg-gray-800">
+        {% if circle.picture %}
+        <img alt="mountain" class="w-45 rounded-md border-2 border-gray-300" src="{{ circle.picture.url }}" />
+        {% endif %}
+         <div id="body" class="flex flex-col ml-5">
+            <h4 id="name" class="text-xl font-semibold mb-2"><a href="{% url 'circle_accounts:circle_detail' circle.id %}">サークル名</a></h4>
+            <p id="job" class="text-gray-800 mt-2">{{ circle.contents }}</p>
+         </div>
+    </div>
+      {% endfor %}
+  </div>
+</section>
+</div>
+
+<div class="post_lists">　
+    <h1>新規投稿リスト</h1>
+    <section class="container px-6 py-4 mx-auto">
+  <div class="grid gap-6 mb-8 md:grid-cols-1 lg:grid-cols-2">
+      {% for post in Post_lists %}
+    <!-- Card 1 -->
+    <div class="flex-col items-start p-4 bg-white border-2 border-gray-200 rounded-lg shadow-sm dark:bg-gray-800">
+        {% if post.picture %}
+
+        <img alt="mountain" class="w-45 rounded-md border-2 border-gray-300" src="{{ post.picture.url }}" />
+        {% endif %}
+         <div id="body" class="flex flex-col ml-5">
+            <h4 id="name" class="text-xl font-semibold mb-2"><a href="{% url 'articles:post_detail' post.id %}">{{ post.title }}</a></h4>
+            <p id="job" class="text-gray-800 mt-2">{{ post.text | limit }}</p>
+         </div>
+    </div>
+      {% endfor %}
+  </div>
+</section>
+</div>
+{% endblock %}
