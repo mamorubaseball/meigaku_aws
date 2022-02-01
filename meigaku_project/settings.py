@@ -22,6 +22,7 @@ TEMPLATE_DIR=os.path.join(BASE_DIR,'templates')
 env = environ.Env()
 env.read_env(os.path.join(BASE_DIR, '.env'))
 SECRET_KEY = env('SECRET_KEY')
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
 DEBUG = env('DEBUG')
 
 # Quick-start development settings - unsuitable for production
