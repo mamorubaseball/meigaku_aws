@@ -171,7 +171,6 @@ MARKDOWN_EXTENSIONS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_USERNAME_REQUIRED = False
@@ -180,10 +179,3 @@ LOGIN_URL='/circle_accounts/circle_login'
 LOGIN_REDIRECT_URL='/circle_accounts/circle_login_home'
 LOGOUT_REDIRECT_URL='/circle_accounts/home'
 
-ALLOWED_HOSTS = ["meigakuwebapp.herokuapp.com"]
-
-if not DEBUG:
-    SECRET_KEY = os.environ['SECRET_KEY']
-    import django_heroku  # 追加
-
-    django_heroku.settings(locals())  # 追加
